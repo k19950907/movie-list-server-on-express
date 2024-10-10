@@ -21,7 +21,8 @@ app.get("/movies", (req, res) => {
 
 app.get("/movie/:id", (req, res) => {
   const id = req.params.id
-  res.send(`read movie: ${id}`)
+  const movie = movies.find((movie) => movie.id.toString() === id)
+  res.render("details", { movie, BASE_IMG_URL })
 })
 
 app.listen(port, () => {
